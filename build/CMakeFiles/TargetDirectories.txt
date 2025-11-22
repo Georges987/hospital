@@ -1,0 +1,3 @@
+/home/alexis/Documents/cpp/build/CMakeFiles/MainWindowApp.dir
+/home/alexis/Documents/cpp/build/CMakeFiles/edit_cache.dir
+/home/alexis/Documents/cpp/build/CMakeFiles/rebuild_cache.dir

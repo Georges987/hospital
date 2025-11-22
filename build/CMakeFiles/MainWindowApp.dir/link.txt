@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/MainWindowApp.dir/main.cpp.o CMakeFiles/MainWindowApp.dir/MainWindow.cpp.o -o MainWindowApp 
