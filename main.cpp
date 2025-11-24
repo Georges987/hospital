@@ -4,6 +4,10 @@
 #include "HealthProfessional.h"
 #include "User.h"
 #include "MedicalRecord.h"
+#include "Antecedent.h"
+#include "Consultation.h"
+#include "Prescription.h"
+#include "Exam.h"
 #include "LoginWindow.h"
 #include <memory>
 #include <iostream>
@@ -21,6 +25,10 @@ int main() {
     HealthProfessional::createTable();
     User::createTable();
     MedicalRecord::createTable();
+    Antecedent::createTable();
+    Consultation::createTable();
+    Prescription::createTable();
+    Exam::createTable();
     
     // Ajouter des données de test
     HealthProfessional::seedData();

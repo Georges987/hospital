@@ -31,8 +31,16 @@ bool PatientCreateWindow::handleInput() {
         return false;
     }
     
-    int age = readInt("Âge : ");
-    if (age < 0) {
+    std::string dateNaissance = readString("Date de naissance (YYYY-MM-DD) : ");
+    if (dateNaissance.empty()) {
+        std::cout << "\nCréation annulée." << std::endl;
+        std::cout << "Appuyez sur Entrée pour continuer...";
+        std::cin.get();
+        return false;
+    }
+    
+    std::string sexe = readString("Sexe (M/F/Autre) : ");
+    if (sexe.empty()) {
         std::cout << "\nCréation annulée." << std::endl;
         std::cout << "Appuyez sur Entrée pour continuer...";
         std::cin.get();
@@ -42,9 +50,10 @@ bool PatientCreateWindow::handleInput() {
     std::string telephone = readString("Téléphone (optionnel) : ");
     
     // Créer et sauvegarder le patient
-    Patient patient(nom, prenom, age, telephone);
+    Patient patient(nom, prenom, dateNaissance, sexe, telephone);
     if (patient.save()) {
         std::cout << "\n✅ Patient créé avec succès ! (ID: " << patient.getId() << ")" << std::endl;
+        std::cout << "Âge calculé: " << patient.getAge() << " ans" << std::endl;
     } else {
         std::cout << "\n❌ Erreur lors de la création du patient." << std::endl;
     }

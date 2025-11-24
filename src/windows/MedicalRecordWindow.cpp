@@ -3,6 +3,8 @@
 #include "MedicalRecord.h"
 #include "HealthProfessional.h"
 #include "ProfessionalType.h"
+#include "AntecedentWindow.h"
+#include "ConsultationWindow.h"
 #include <iostream>
 #include <limits>
 
@@ -31,6 +33,14 @@ bool MedicalRecordWindow::handleInput() {
             break;
         case 2:
             assignDoctor();
+            break;
+        case 3:
+            // Antécédents
+            navigator.push(std::make_unique<AntecedentWindow>(patient, navigator));
+            break;
+        case 4:
+            // Consultations
+            navigator.push(std::make_unique<ConsultationWindow>(patient, navigator));
             break;
         case 0:
             return false; // Retour
@@ -80,6 +90,8 @@ void MedicalRecordWindow::showMedicalRecord() {
 void MedicalRecordWindow::showOptions() {
     std::cout << "1. Modifier le dossier médical" << std::endl;
     std::cout << "2. Assigner/Changer le médecin" << std::endl;
+    std::cout << "3. Antécédents médicaux" << std::endl;
+    std::cout << "4. Consultations" << std::endl;
     std::cout << "0. Retour" << std::endl;
     std::cout << "\nVotre choix : ";
 }

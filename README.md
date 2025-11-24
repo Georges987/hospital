@@ -1,154 +1,165 @@
-# Hospital Management System
+# Système de Gestion Hospitalière
 
-Application de gestion hospitalière avec architecture modulaire, système de navigation, et base de données SQLite.
+Un système complet de gestion d'informations médicales développé en C++17 avec SQLite3.
 
-## 🏗️ Architecture
-
-Ce projet utilise une architecture scalable inspirée de Flutter et Laravel :
-
-- **Window (abstraite)** : Interface pour toutes les fenêtres
-- **Navigator** : Système de navigation par pile (push/pop)
-- **ListWindow** : Composant générique réutilisable pour les listes
-- **Database** : Singleton pour gérer SQLite
-- **Model<T>** : ORM template pour les models (style Laravel)
-- **Patient** : Model concret avec CRUD
-
-## 📋 Prérequis
-
-- CMake 3.10+
-- Compilateur C++17 (g++, clang++)
-- Make
-- **SQLite3** : `sudo apt-get install libsqlite3-dev`
-
-## 🚀 Compilation
-
-```bash
-# Créer le dossier build (si nécessaire)
-mkdir -p build
-
-# Compiler
-cd build
-cmake ..
-make
-```
-
-## ▶️ Exécution
-
-Depuis la racine du projet :
-
-```bash
-./build/MainWindowApp
-```
-
-Ou depuis le dossier build :
-
-```bash
-cd build
-./MainWindowApp
-```
-
-## 📁 Structure du Projet
+## 🏗️ Structure du Projet
 
 ```
 cpp/
-├── Window.h                    # Classe abstraite de base
-├── Navigator.h/cpp             # Système de navigation
-├── ListWindow.h                # Composant liste générique
-├── MainWindow.h/cpp            # Fenêtre principale
-├── Database.h/cpp              # Singleton SQLite
-├── Model.h                     # ORM template
-├── Patient.h/cpp               # Model Patient
-├── PatientDetailsWindow.h/cpp  # UI détails patient
-├── main.cpp                    # Point d'entrée
-├── CMakeLists.txt              # Configuration build
-├── hospital.db                 # Base de données SQLite (auto-créée)
-└── build/                      # Fichiers compilés
+├── include/              # Fichiers d'en-tête (.h)
+│   ├── models/          # Modèles de données
+│   ├── windows/         # Interfaces utilisateur
+│   ├── services/        # Services (Auth, Stats, Export)
+│   └── utils/           # Utilitaires (DB, Navigation, Enums)
+├── src/                 # Fichiers source (.cpp)
+│   ├── models/          # Implémentations des modèles
+│   ├── windows/         # Implémentations des fenêtres
+│   ├── services/        # Implémentations des services
+│   └── utils/           # Implémentations des utilitaires
+├── build/               # Fichiers de compilation
+├── main.cpp             # Point d'entrée de l'application
+└── CMakeLists.txt       # Configuration CMake
 ```
-
-## 🎯 Utilisation
-
-### Ajouter une Nouvelle Fenêtre
-
-```cpp
-class MyWindow : public Window {
-    Navigator& navigator;
-public:
-    MyWindow(Navigator& nav) : navigator(nav) {}
-    
-    void show() override {
-        std::cout << "Mon contenu" << std::endl;
-    }
-    
-    bool handleInput() override {
-        return true;  // false pour fermer
-    }
-    
-    std::string getTitle() const override {
-        return "Ma Fenêtre";
-    }
-};
-
-// Utiliser
-navigator.push(std::make_unique<MyWindow>(navigator));
-```
-
-### Créer un Nouveau Model
-
-```cpp
-class Doctor : public Model<Doctor> {
-public:
-    Doctor(const std::string& nom, const std::string& specialite);
-    
-    std::string getTableName() const override { return "doctors"; }
-    std::map<std::string, std::string> toMap() const override;
-    void fromMap(const std::map<std::string, std::string>& data) override;
-    
-private:
-    std::string nom;
-    std::string specialite;
-};
-```
-
-### Utiliser l'ORM
-
-```cpp
-// Créer
-Patient patient("Dupont", "Jean", 45, "0123456789");
-patient.save();
-
-// Lister
-auto patients = Patient::all();
-
-// Trouver
-auto patient = Patient::find(1);
-
-// Modifier
-patient->setAge(46);
-patient->save();
-
-// Supprimer
-patient->remove();
-```
-
-## 📚 Documentation
-
-Voir [walkthrough.md](file:///home/alexis/.gemini/antigravity/brain/79d77d94-f36a-42d8-9abd-d166288fa7fe/walkthrough.md) pour des exemples détaillés et le guide complet.
 
 ## ✨ Fonctionnalités
 
-- ✅ Navigation par pile (comme Flutter)
-- ✅ Gestion automatique de la mémoire
-- ✅ Composants réutilisables
-- ✅ Architecture extensible
-- ✅ Base de données SQLite
-- ✅ ORM inspiré de Laravel
-- ✅ CRUD complet pour les patients
-- ✅ Interface de gestion des patients
+### Gestion des Utilisateurs
+- ✅ Authentification (login/logout)
+- ✅ Rôles : Administrateur, Médecin, Secrétaire
+- ✅ Permissions granulaires
 
-## 🔮 Prochaines Étapes
+### Gestion des Patients
+- ✅ CRUD complet avec tous les attributs (date de naissance, sexe, groupe sanguin, etc.)
+- ✅ Dossiers médicaux
+- ✅ Antécédents médicaux (pathologies, chirurgies, allergies, traitements)
+- ✅ Consultations (programmation, historique, complétion)
+- ✅ Prescriptions médicales
+- ✅ Examens médicaux
 
-- [ ] Ajouter d'autres models (Doctor, Appointment)
-- [ ] Implémenter les relations entre models
-- [ ] Ajouter un système de recherche
-- [ ] Créer des rapports et statistiques
-- [ ] Ajouter des tests unitaires
+### Statistiques
+- ✅ Dashboard complet pour administrateurs
+- ✅ Métriques patients (total, par sexe, par âge)
+- ✅ Métriques professionnels (par type, actifs)
+- ✅ Métriques consultations (programmées, terminées, par période)
+- ✅ Métriques antécédents
+
+### Export de Données
+- ✅ Export CSV des patients
+- ✅ Export CSV des consultations
+- ✅ Export CSV des statistiques
+
+## 🚀 Compilation et Exécution
+
+### Prérequis
+- CMake 3.10+
+- Compilateur C++17
+- SQLite3
+
+### Compilation
+
+```bash
+# Créer le dossier de build
+mkdir -p build
+cd build
+
+# Générer les fichiers de build
+cmake ..
+
+# Compiler
+make
+```
+
+### Exécution
+
+```bash
+# Depuis le dossier build
+./MainWindowApp
+
+# Ou depuis la racine
+./build/MainWindowApp
+```
+
+### Identifiants par défaut
+
+| Rôle | Utilisateur | Mot de passe |
+|------|-------------|--------------|
+| Administrateur | admin | admin123 |
+| Médecin | doctor | doctor123 |
+| Secrétaire | secretary | secretary123 |
+
+## 📊 Architecture
+
+### Modèles de Données (8)
+- `Patient` - Informations patients
+- `HealthProfessional` - Professionnels de santé
+- `User` - Comptes utilisateurs
+- `MedicalRecord` - Dossiers médicaux
+- `Antecedent` - Antécédents médicaux
+- `Consultation` - Consultations
+- `Prescription` - Prescriptions
+- `Exam` - Examens médicaux
+
+### Services (3)
+- `AuthService` - Authentification et permissions
+- `Statistics` - Calcul des statistiques
+- `CSVExporter` - Export de données
+
+### Utilitaires (5)
+- `Database` - Gestion SQLite (Singleton)
+- `Navigator` - Navigation entre fenêtres
+- `Window` - Classe de base pour les fenêtres
+- `Model<T>` - ORM générique
+- Enums : `ProfessionalType`, `AntecedentType`, `ConsultationStatus`
+
+## 🗄️ Base de Données
+
+Le système utilise SQLite3 avec 8 tables :
+- `patients`
+- `health_professionals`
+- `users`
+- `medical_records`
+- `antecedents`
+- `consultations`
+- `prescriptions`
+- `exams`
+
+La base de données est créée automatiquement au premier lancement (`hospital.db`).
+
+## 📝 Utilisation
+
+### Workflow typique
+
+1. **Connexion** : Utilisez les identifiants par défaut
+2. **Gestion Patients** : Créer, consulter, modifier des patients
+3. **Dossier Médical** : Accéder au dossier complet d'un patient
+4. **Consultations** : Programmer et compléter des consultations
+5. **Statistiques** (Admin) : Consulter le dashboard
+6. **Export** (Admin) : Exporter les données en CSV
+
+## 🛠️ Technologies
+
+- **Langage** : C++17
+- **Base de données** : SQLite3
+- **Build** : CMake
+- **Architecture** : MVC avec ORM custom
+- **Patterns** : Singleton, Model-View
+
+## 📦 Fichiers Exportés
+
+Les exports CSV sont créés dans le répertoire courant :
+- `patients_export.csv`
+- `consultations_export.csv`
+- `statistiques_export.csv`
+
+## 🎯 Conformité
+
+Ce projet implémente toutes les fonctionnalités requises :
+- ✅ Gestion complète des patients
+- ✅ Dossiers médicaux avec antécédents
+- ✅ Système de consultations
+- ✅ Statistiques et rapports
+- ✅ Fonctionnalités bonus (prescriptions, examens, export CSV)
+
+## 📄 Licence
+
+Projet académique - Système de Gestion Hospitalière

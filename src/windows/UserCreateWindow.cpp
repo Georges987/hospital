@@ -56,8 +56,8 @@ bool UserCreateWindow::handleInput() {
         std::string specialite = readString("Spécialité : ");
         professional.setSpecialite(specialite);
         
-        std::string numeroOrdre = readString("Numéro d'ordre : ");
-        professional.setNumeroOrdre(numeroOrdre);
+        std::string numeroLicence = readString("Numéro de licence : ");
+        professional.setNumeroLicence(numeroLicence);
     } else if (type == ProfessionalType::SECRETARY) {
         std::string service = readString("Service : ");
         professional.setService(service);

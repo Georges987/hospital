@@ -25,32 +25,32 @@ bool PatientDetailsWindow::handleInput() {
     
     switch (choice) {
         case 1: {
-            // Modifier l'âge
-            std::cout << "\nNouvel âge : ";
-            int newAge;
-            std::cin >> newAge;
+            // Modifier les informations
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             
-            if (std::cin.fail()) {
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                std::cout << "Âge invalide.";
-            } else {
-                patient.setAge(newAge);
-                if (patient.save()) {
-                    std::cout << "Patient mis à jour avec succès !";
-                    
-                    // Recharger le patient depuis la DB pour synchroniser
-                    auto updatedPatient = Patient::find(patient.getId());
-                    if (updatedPatient) {
-                        patient = *updatedPatient;
-                    }
-                } else {
-                    std::cout << "Erreur lors de la mise à jour.";
+            std::cout << "\nEmail (actuel: " << patient.getEmail() << ") : ";
+            std::string email;
+            std::getline(std::cin, email);
+            if (!email.empty()) patient.setEmail(email);
+            
+            std::cout << "Adresse (actuel: " << patient.getAdresse() << ") : ";
+            std::string adresse;
+            std::getline(std::cin, adresse);
+            if (!adresse.empty()) patient.setAdresse(adresse);
+            
+            if (patient.save()) {
+                std::cout << "\n✅ Patient mis à jour avec succès !";
+                
+                // Recharger le patient depuis la DB pour synchroniser
+                auto updatedPatient = Patient::find(patient.getId());
+                if (updatedPatient) {
+                    patient = *updatedPatient;
                 }
+            } else {
+                std::cout << "\n❌ Erreur lors de la mise à jour.";
             }
             
             std::cout << "\nAppuyez sur Entrée pour continuer...";
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cin.get();
             break;
         }
@@ -99,15 +99,20 @@ std::string PatientDetailsWindow::getTitle() const {
 }
 
 void PatientDetailsWindow::showDetails() {
-    std::cout << "ID         : " << patient.getId() << std::endl;
-    std::cout << "Nom        : " << patient.getNom() << std::endl;
-    std::cout << "Prénom     : " << patient.getPrenom() << std::endl;
-    std::cout << "Âge        : " << patient.getAge() << " ans" << std::endl;
-    std::cout << "Téléphone  : " << patient.getTelephone() << std::endl;
+    std::cout << "ID              : " << patient.getId() << std::endl;
+    std::cout << "Nom             : " << patient.getNom() << std::endl;
+    std::cout << "Prénom          : " << patient.getPrenom() << std::endl;
+    std::cout << "Date naissance  : " << patient.getDateNaissance() << std::endl;
+    std::cout << "Âge             : " << patient.getAge() << " ans" << std::endl;
+    std::cout << "Sexe            : " << patient.getSexe() << std::endl;
+    std::cout << "Groupe sanguin  : " << (patient.getGroupeSanguin().empty() ? "(non renseigné)" : patient.getGroupeSanguin()) << std::endl;
+    std::cout << "Téléphone       : " << patient.getTelephone() << std::endl;
+    std::cout << "Email           : " << (patient.getEmail().empty() ? "(non renseigné)" : patient.getEmail()) << std::endl;
+    std::cout << "Adresse         : " << (patient.getAdresse().empty() ? "(non renseignée)" : patient.getAdresse()) << std::endl;
 }
 
 void PatientDetailsWindow::showOptions() {
-    std::cout << "1. Modifier l'âge" << std::endl;
+    std::cout << "1. Modifier les informations" << std::endl;
     std::cout << "2. Dossier médical" << std::endl;
     std::cout << "3. Supprimer le patient" << std::endl;
     std::cout << "0. Retour" << std::endl;

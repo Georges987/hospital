@@ -16,18 +16,24 @@ public:
     // Getters
     std::string getEmail() const { return email; }
     ProfessionalType getType() const { return type; }
+    std::string getNumeroLicence() const { return numeroLicence; }
     std::string getSpecialite() const { return specialite; }
-    std::string getNumeroOrdre() const { return numeroOrdre; }
     std::string getService() const { return service; }
     std::string getDepartment() const { return department; }
+    std::string getDateEmbauche() const { return dateEmbauche; }
+    bool getIsActive() const { return isActive; }
+    bool getHasMedicalDataAccess() const { return hasMedicalDataAccess; }
     
     // Setters
     void setEmail(const std::string& e) { email = e; }
     void setType(ProfessionalType t) { type = t; }
+    void setNumeroLicence(const std::string& n) { numeroLicence = n; }
     void setSpecialite(const std::string& s) { specialite = s; }
-    void setNumeroOrdre(const std::string& n) { numeroOrdre = n; }
     void setService(const std::string& s) { service = s; }
     void setDepartment(const std::string& d) { department = d; }
+    void setDateEmbauche(const std::string& d) { dateEmbauche = d; }
+    void setIsActive(bool a) { isActive = a; }
+    void setHasMedicalDataAccess(bool access) { hasMedicalDataAccess = access; }
     
     // ORM methods
     std::string getTableName() const override;
@@ -41,12 +47,13 @@ public:
 private:
     std::string email;
     ProfessionalType type = ProfessionalType::SECRETARY;
-    
-    // Attributs spécifiques selon le type
-    std::string specialite;    // Pour DOCTOR
-    std::string numeroOrdre;   // Pour DOCTOR
-    std::string service;       // Pour SECRETARY
-    std::string department;    // Pour ADMIN
+    std::string numeroLicence;      // Numéro de licence professionnelle (générique)
+    std::string specialite;          // Pour DOCTOR
+    std::string service;             // Pour SECRETARY
+    std::string department;          // Pour ADMIN
+    std::string dateEmbauche;        // Date d'embauche
+    bool isActive = true;            // Statut actif/inactif
+    bool hasMedicalDataAccess = false; // Habilitation accès données médicales
 };
 
 #endif // HEALTHPROFESSIONAL_H

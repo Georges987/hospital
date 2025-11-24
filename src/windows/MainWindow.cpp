@@ -5,6 +5,8 @@
 #include "PatientDetailsWindow.h"
 #include "PatientCreateWindow.h"
 #include "UserManagementWindow.h"
+#include "StatisticsWindow.h"
+#include "ExportWindow.h"
 #include "AuthService.h"
 #include <iostream>
 #include <limits>
@@ -46,10 +48,34 @@ bool MainWindow::handleInput() {
             break;
         }
         case 3: {
+            // Statistiques (Admin uniquement) ou Déconnexion (autres)
+            if (auth.hasPermission(ProfessionalType::ADMIN)) {
+                navigator.push(std::make_unique<StatisticsWindow>(navigator));
+            } else {
+                // Déconnexion pour non-admins
+                std::cout << "\nDéconnexion..." << std::endl;
+                auth.logout();
+                return false;
+            }
+            break;
+        }
+        case 4: {
+            // Export CSV (Admin uniquement)
+            if (auth.hasPermission(ProfessionalType::ADMIN)) {
+                navigator.push(std::make_unique<ExportWindow>(navigator));
+            } else {
+                std::cout << "\n❌ Accès refusé. Réservé aux administrateurs." << std::endl;
+                std::cout << "Appuyez sur Entrée pour continuer...";
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cin.get();
+            }
+            break;
+        }
+        case 0: {
             // Déconnexion
             std::cout << "\nDéconnexion..." << std::endl;
             auth.logout();
-            return false; // Retour au LoginWindow
+            return false;
         }
         default:
             std::cout << "\nChoix invalide. Appuyez sur Entrée pour continuer...";
@@ -77,9 +103,11 @@ void MainWindow::showOptions() {
     
     if (auth.hasPermission(ProfessionalType::ADMIN)) {
         std::cout << "2. Gestion des Utilisateurs" << std::endl;
+        std::cout << "3. Statistiques" << std::endl;
+        std::cout << "4. Export CSV" << std::endl;
     }
     
-    std::cout << "3. Déconnexion" << std::endl;
+    std::cout << "0. Déconnexion" << std::endl;
     std::cout << "\nVotre choix : ";
 }
 
