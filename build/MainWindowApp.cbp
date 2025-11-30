@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="MainWindowApp"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/alexis/Ressources/cpp/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MainWindowApp">
+				<Option output="/home/alexis/Ressources/cpp/build/MainWindowApp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/alexis/Ressources/cpp/build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/alexis/Ressources/cpp/include/models"/>
+					<Add directory="/home/alexis/Ressources/cpp/include/windows"/>
+					<Add directory="/home/alexis/Ressources/cpp/include/services"/>
+					<Add directory="/home/alexis/Ressources/cpp/include/utils"/>
+					<Add directory="/usr/include/c++/14"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/14"/>
+					<Add directory="/usr/include/c++/14/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/14/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 MainWindowApp"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MainWindowApp/fast">
+				<Option output="/home/alexis/Ressources/cpp/build/MainWindowApp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/alexis/Ressources/cpp/build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/alexis/Ressources/cpp/include/models"/>
+					<Add directory="/home/alexis/Ressources/cpp/include/windows"/>
+					<Add directory="/home/alexis/Ressources/cpp/include/services"/>
+					<Add directory="/home/alexis/Ressources/cpp/include/utils"/>
+					<Add directory="/usr/include/c++/14"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/14"/>
+					<Add directory="/usr/include/c++/14/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/14/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 MainWindowApp/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/alexis/Ressources/cpp/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/alexis/Ressources/cpp/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/alexis/Ressources/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/alexis/Ressources/cpp/main.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/models/Antecedent.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/models/Consultation.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/models/Exam.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/models/HealthProfessional.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/models/MedicalRecord.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/models/Patient.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/models/Prescription.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/models/User.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/services/AuthService.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/services/CSVExporter.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/services/Statistics.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/utils/AntecedentType.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/utils/ConsultationStatus.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/utils/Database.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/utils/Navigator.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/utils/ProfessionalType.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/AntecedentWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/ConsultationWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/ExportWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/LoginWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/MainWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/MedicalRecordWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/PatientCreateWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/PatientDetailsWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/StatisticsWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/UserCreateWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/UserDetailsWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/src/windows/UserManagementWindow.cpp">
+			<Option target="MainWindowApp"/>
+		</Unit>
+		<Unit filename="/home/alexis/Ressources/cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
